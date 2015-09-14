@@ -5,6 +5,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # Install colour scheme
 git clone https://github.com/sickill/vim-monokai
 mv vim-monokai/colors ~/.vim/ && rm -rf vim-monokai
+# Copy over .vimrc
 cp .vimrc ~/
 # Install all vim plugins
 vim +PluginInstall +qall
