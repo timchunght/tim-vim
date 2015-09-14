@@ -80,6 +80,7 @@ augroup END
 
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
+Plugin 'sickill/vim-monokai'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 " Need to figure out how to make it less intrusive first
@@ -99,6 +100,7 @@ call vundle#end()
 syntax on
 filetype plugin indent on
 set autoindent
+colorscheme monokai
 "colorscheme inkpot
 
 " NERDtree
