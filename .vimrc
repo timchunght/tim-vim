@@ -88,6 +88,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 Plugin 'mattn/emmet-vim'
 " TIM: enable these one by one if you like, go to their githubs
 "Plugin 'SirVer/ultisnips'
@@ -100,6 +101,7 @@ syntax on
 filetype plugin indent on
 set autoindent
 colorscheme monokai
+filetype plugin on
 "colorscheme inkpot
 
 " NERDtree
