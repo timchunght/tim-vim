@@ -93,6 +93,7 @@ Plugin 'mattn/emmet-vim'
 " TIM: enable these one by one if you like, go to their githubs
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Valloric/YouCompleteMe'
+Plugin 'wincent/command-t'
 Plugin 'honza/vim-snippets'
 Plugin 'flazz/vim-colorschemes'
 call vundle#end()
@@ -105,7 +106,7 @@ filetype plugin on
 "colorscheme inkpot
 
 " NERDtree
-map <C-t> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " Enable UTF-8 to properly display directory arrows. Otherwise, uncomment this.
 let g:NERDTreeDirArrows=0
