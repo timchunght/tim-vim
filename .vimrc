@@ -105,7 +105,7 @@ filetype plugin on
 "colorscheme inkpot
 
 " NERDtree
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " Enable UTF-8 to properly display directory arrows. Otherwise, uncomment this.
 let g:NERDTreeDirArrows=0
