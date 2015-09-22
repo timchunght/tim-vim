@@ -105,10 +105,10 @@ filetype plugin on
 "colorscheme inkpot
 
 " NERDtree
-:nmap <leader>e :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " Enable UTF-8 to properly display directory arrows. Otherwise, uncomment this.
-"let g:NERDTreeDirArrows=0
+let g:NERDTreeDirArrows=0
 " A function that automatically closes NERDTree if it is the last buffer open
 function! NERDTreeQuit()
     redir => buffersoutput
