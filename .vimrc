@@ -22,6 +22,7 @@ set ruler
 set autochdir
 set showcmd
 set lazyredraw
+set noswapfile
 
 "highlight ColorColumn ctermbg=7
 " Different scheme for different time
