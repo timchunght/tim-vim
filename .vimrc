@@ -45,7 +45,6 @@ Plugin 'mattn/emmet-vim'
 " TIM: enable these one by one if you like, go to their githubs
 "Plugin 'SirVer/ultisnips'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'wincent/command-t'
 Plugin 'honza/vim-snippets'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
@@ -111,7 +110,7 @@ set autoindent
 set backspace=indent,eol,start
 set ruler
 set colorcolumn=80
-set cursorline
+" set cursorline
 set encoding=utf-8
 set fileencoding=utf-8
 set gdefault
