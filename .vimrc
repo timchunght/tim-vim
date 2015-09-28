@@ -1,58 +1,8 @@
-"TODO: create a function that, upon pressing ctrl-g, will save your position
-"in the file, reindent the file, and then reposition your cursor back where
-"you left it.
-let mapleader=';'
-set nocompatible
-set mouse=a
-set laststatus=2
-set nowrap
-set number
-set backspace=indent,eol,start
 set rtp+=~/.vim/bundle/Vundle.vim
-set history=100
-set incsearch
-set ignorecase
-set smartcase
-set hlsearch
-set background=dark
-set ruler
-"set backup
-"set backupdir=~/.vim/backup
-"set directory=~/.vim/tmp
-set autochdir
-set showcmd
-set lazyredraw
-set noswapfile
-
-"highlight ColorColumn ctermbg=7
-" Different scheme for different time
-"if (strftime("%H") >= "21" || strftime("%H") <= "06")
-"make something your colorscheme
-"endif
 
 inoremap jk <ESC>
-inoremap <c-d> <ESC>0d$i
-inoremap wq <ESC>:wq<CR>
-"Check what these do
-"noremap <leader>y "*y
-"noremap <leader>yy "*Y
-"noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-inoremap <c-g> <esc>gg=Ggg
-nnoremap <c-g> <esc>gg=Ggg
-" For when you come up with a great keymapping in the heat of coding
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>q :nohlsearch<CR>
-nnoremap <leader>w :setlocal wrap!<CR>:setlocal wrap?<CR>
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <leader>l :bnext<CR>
-nnoremap <leader>h :bprev<CR>
 nnoremap j gj
 nnoremap k gk
-nnoremap <leader>t :CtrlP<CR>
-
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Restore cursor position to where it was before
 augroup JumpCursorOnEdit
@@ -113,71 +63,128 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " Enable UTF-8 to properly display directory arrows. Otherwise, uncomment this.
 let g:NERDTreeDirArrows=0
-" A function that automatically closes NERDTree if it is the last buffer open
-function! NERDTreeQuit()
-    redir => buffersoutput
-    silent buffers
-    redir END
-    let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
-    let windowfound = 0
-    for bline in split(buffersoutput, "\n")
-        let m = matchlist(bline, pattern)
-        if (len(m) > 0)
-            if (m[2] =~ '..a..')
-                let windowfound = 1
-            endif
-        endif
-    endfor
-
-    if (!windowfound)
-        quitall
-    endif
-endfunction
-autocmd WinEnter * call NERDTreeQuit()
 
 " 256 colors
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
     set t_Co=256
 endif
 
-" CtrlP setting
-let g:ctrlp_working_path_mode = 'ra'
+" New Settings
+let mapleader = ","
 
-" Tab Settings
-"
-:set expandtab tabstop=2 shiftwidth=2 softtabstop=2
-:nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-:nmap <leader>T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
-:nmap <leader>M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-:nmap <leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
-au FileType ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-au FileType eruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-au FileType html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-au FileType javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" Mappings {{{
 
-let g:numbers_exclude = ['nerdtree']
+" Insert mode mappings {{{
+inoremap <C-l> <space>=><space>
+inoremap <C-s> <Esc>:w<CR>a
+" }}}
 
-" Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-let g:syntastic_always_population_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_c_auto_refresh_includes=1
+" Normal mode mappings {{{
+nnoremap <C-s> :w<CR>
+nnoremap <leader>ev :vs $MYVIMRC<CR>
+nnoremap <leader>gs :Gstatus<CR><C-W>15+
+nnoremap <leader>m :NERDTreeToggle<CR>
+nnoremap <leader>rs :!clear;time bundle exec rake<CR>
+nnoremap <leader>a :Ack 
+nnoremap <leader>d :bd<CR> 
+nnoremap <leader>w :w<CR>
+nnoremap <leader><cr> :noh<CR>
+nnoremap <leader>l :ls<CR>:b
+nnoremap <leader>t :CtrlP<CR>
+nnoremap n nzz
+nnoremap N Nzz
+" }}}
 
-" UltiSnips settings so that there's no competition with YCM
-let g:UltiSnipsExpandTrigger="<C-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-k>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
+" Visual mode mappings {{{
+vnoremap < <gv
+vnoremap > >gv
 
-" airline
-let g:airline_powerline_fonts=0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline#extensions#syntastic#enabled = 10
+" Execute dot in the selection
+vnoremap . :norm.<CR>
+" }}}
+
+" }}}
+
+" General settings {{{
+set t_Co=256
+set autoindent
+set backspace=indent,eol,start
+set colorcolumn=80
+set cursorline
+set encoding=utf-8
+set fileencoding=utf-8
+set gdefault
+set guifont=Fira\ Mono\ 10.5
+set guioptions-=Be
+set guioptions=aAc
+set hlsearch
+set ignorecase
+set incsearch
+set list
+set listchars=tab:▸\ ,eol:¬,nbsp:⋅,trail:•
+set noswapfile
+set number
+set shell=/bin/bash
+set showmatch
+set smartcase
+"set smartindent
+set term=screen-256color
+set ts=2 sts=2 sw=2 expandtab
+set novisualbell
+set nowrap
+" }}}
+
+" Autocommands {{{
+
+".ru files are Ruby.
+au BufRead,BufNewFile *.ru set filetype=ruby
+au BufRead,BufNewFile [vV]agrantfile set filetype=ruby
+
+" Markdown gets auto textwidth
+au Bufread,BufNewFile *.md set filetype=markdown textwidth=79
+au Bufread,BufNewFile *.markdown set textwidth=79
+
+" .feature files are Cucumber.
+au Bufread,BufNewFile *.feature set filetype=cucumber
+" }}}
+
+" Statusline {{{
+hi User1 ctermbg=white    ctermfg=black   guibg=#89A1A1 guifg=#002B36
+hi User2 ctermbg=red      ctermfg=white   guibg=#aa0000 guifg=#89a1a1
+
+function! GetCWD()
+  return expand(":pwd")
+endfunction
+
+function! IsHelp()
+  return &buftype=='help'?' (help) ':''
+endfunction
+
+function! GetName()
+  return expand("%:t")==''?'<none>':expand("%:t")
+endfunction
+
+set statusline=%1*[%{GetName()}]\ 
+set statusline+=%<pwd:%{getcwd()}\ 
+set statusline+=%2*%{&modified?'\[+]':''}%*
+set statusline+=%{IsHelp()}
+set statusline+=%{&readonly?'\ (ro)\ ':''}
+set statusline+=[
+set statusline+=%{strlen(&fenc)?&fenc:'none'}\|
+set statusline+=%{&ff}\|
+set statusline+=%{strlen(&ft)?&ft:'<none>'}
+set statusline+=]\ 
+set statusline+=%=
+set statusline+=c%c
+set statusline+=,l%l
+set statusline+=/%L\ 
+
+set laststatus=2
+
+" }}}
+
+" Specific configurations {{{
+let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+" }}}
+
+" vim: foldmethod=marker foldmarker={{{,}}}
