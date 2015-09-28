@@ -49,6 +49,7 @@ nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprev<CR>
 nnoremap j gj
 nnoremap k gk
+nnoremap <leader>t :CtrlP<CR>
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -97,6 +98,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'wincent/command-t'
 Plugin 'honza/vim-snippets'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/ctrlp.vim'
 call vundle#end()
 
 syntax on
@@ -138,8 +140,12 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gno
     set t_Co=256
 endif
 
+" CtrlP setting
+let g:ctrlp_working_path_mode = 'ra'
+
 " Tab Settings
-:set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+"
+:set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 :nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 :nmap <leader>T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
 :nmap <leader>M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
