@@ -110,7 +110,7 @@ set autoindent
 set backspace=indent,eol,start
 set ruler
 set colorcolumn=80
-set cursorline
+"set cursorline
 set encoding=utf-8
 set fileencoding=utf-8
 set gdefault
