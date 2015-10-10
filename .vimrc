@@ -110,7 +110,7 @@ set autoindent
 set backspace=indent,eol,start
 set ruler
 set colorcolumn=80
-" set cursorline
+set cursorline
 set encoding=utf-8
 set fileencoding=utf-8
 set gdefault
@@ -128,7 +128,7 @@ set shell=/bin/bash
 set showmatch
 set smartcase
 set lazyredraw
-"set smartindent
+set smartindent
 set term=screen-256color
 set ts=2 sts=2 sw=2 expandtab
 set novisualbell
