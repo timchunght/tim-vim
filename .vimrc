@@ -48,6 +48,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 syntax on
