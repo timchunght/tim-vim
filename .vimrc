@@ -49,6 +49,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 call vundle#end()
 
 syntax on
@@ -142,6 +144,10 @@ set showcmd
 ".ru files are Ruby.
 au BufRead,BufNewFile *.ru set filetype=ruby
 au BufRead,BufNewFile [vV]agrantfile set filetype=ruby
+
+".go files are Go files.
+au BufRead,BufNewFile *.go set filetype=go
+
 
 " Markdown gets auto textwidth
 au Bufread,BufNewFile *.md set filetype=markdown textwidth=79
